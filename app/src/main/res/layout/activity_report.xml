@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/top">
 
         <Button
-            android:id="@+id/btnEditUserInfoBack"
+            android:id="@+id/button23"
             android:layout_width="41dp"
             android:layout_height="38dp"
             android:layout_marginStart="10dp"

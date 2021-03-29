@@ -21,7 +21,7 @@
         android:layout_marginTop="22dp"
         android:text="ADD"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUserInfoRole" />
+        app:layout_constraintTop_toBottomOf="@+id/txtRole" />
 
     <Button
         android:id="@+id/btnView"
@@ -32,7 +32,7 @@
         android:layout_marginRight="35dp"
         android:text="View"
         app:layout_constraintEnd_toEndOf="@+id/txtView"
-        app:layout_constraintTop_toBottomOf="@+id/txtUserInfoRole" />
+        app:layout_constraintTop_toBottomOf="@+id/txtRole" />
 
     <EditText
         android:id="@+id/txtFName"
@@ -64,11 +64,11 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/txtUserInfoRole"
+        app:layout_constraintStart_toStartOf="@+id/txtRole"
         app:layout_constraintTop_toBottomOf="@+id/txtLName" />
 
     <EditText
-        android:id="@+id/txtUserInfoRole"
+        android:id="@+id/txtRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -92,7 +92,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUserInfoRole" />
+        app:layout_constraintTop_toBottomOf="@+id/txtRole" />
 
     <EditText
         android:id="@+id/txtEmail"

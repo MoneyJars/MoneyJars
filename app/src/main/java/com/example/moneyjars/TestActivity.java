@@ -25,7 +25,7 @@ public class TestActivity extends HeaderActivity {
         EditText txtFName = findViewById(R.id.txtFName);
         EditText txtLName = findViewById(R.id.txtLName);
         EditText txtPwd = findViewById(R.id.txtPwd);
-        EditText txtRole = findViewById(R.id.txtUserInfoRole);
+        EditText txtRole = findViewById(R.id.txtRole);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

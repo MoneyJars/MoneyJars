@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.moneyjars.common.DateUtil;
+import com.example.moneyjars.helper.DatabaseHelper;
 import com.example.moneyjars.helper.ReportDatabaseHelper;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -18,12 +19,13 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class ReportActivity extends HeaderActivity {
     private ReportDatabaseHelper reportDatabaseHelper;
     private TabLayout tabLayout;
-    private Button btnReportBack;
     private Button btnMinus;
     private Button btnPlus;
     private TextView txtDate;
@@ -39,13 +41,6 @@ public class ReportActivity extends HeaderActivity {
         reportDatabaseHelper = new ReportDatabaseHelper(this);
         userEmail = preferences.getString(USER_EMAIL, "test1@hotmail.com");
         tabLayout = findViewById(R.id.tabLayout);
-        btnReportBack = findViewById(R.id.btnEditUserInfoBack);
-        btnReportBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
         btnPlus = findViewById(R.id.btnPlus);
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override

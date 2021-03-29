@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserInfoDetailActivity">
-    <include
-        android:id="@+id/top"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/activity_header" />
+
     <View
         android:id="@+id/view9"
         android:layout_width="0dp"
@@ -39,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/btnEditUserInfoBack"
+            android:id="@+id/button23"
             android:layout_width="41dp"
             android:layout_height="38dp"
             android:layout_marginStart="10dp"
@@ -60,130 +56,173 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtUserInfoEmail"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginTop="199dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginRight="11dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="3dp"
+        android:background="#000000"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button21"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/menu"
+            app:backgroundTint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/textView54"
+            android:layout_width="320dp"
+            android:layout_height="57dp"
+            android:background="#000000"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="My Money Jar"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button22"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/user"
+            app:backgroundTint="@color/white" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/inputID5"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="sample@test.com"
+        android:inputType="textPersonName"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/view9" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="339dp"
-        android:layout_marginRight="339dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginRight="73dp"
         android:text="Email"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/inputID5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view9" />
 
-    <TextView
-        android:id="@+id/txtUserInfoFName"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="67dp"
-        android:layout_marginLeft="67dp"
-        android:layout_marginTop="260dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginRight="11dp"
+    <EditText
+        android:id="@+id/inputPwd5"
+        android:layout_width="240dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="********"
+        android:inputType="textPassword"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView42"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/inputID5" />
+
+    <EditText
+        android:id="@+id/inputPwd6"
+        android:layout_width="240dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="********"
+        android:inputType="textPassword"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputPwd5" />
 
     <TextView
-        android:id="@+id/textView82"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="280dp"
-        android:layout_marginRight="280dp"
-        android:text="Last Name"
+        android:id="@+id/textPassword5"
+        android:layout_width="113dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Confirm Password"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/inputPwd6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+        app:layout_constraintTop_toBottomOf="@+id/textPassword7" />
 
-    <TextView
-        android:id="@+id/txtUserInfoLName"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="69dp"
-        android:layout_marginLeft="69dp"
-        android:layout_marginTop="322dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginRight="11dp"
+    <EditText
+        android:id="@+id/inputPwd7"
+        android:layout_width="240dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="Soomin"
+        android:inputType="textPassword"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView82"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/inputPwd6" />
 
     <TextView
-        android:id="@+id/textView87"
+        android:id="@+id/textPassword6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="348dp"
-        android:layout_marginRight="348dp"
-        android:text="Role"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:text="User Name"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/inputPwd7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView82" />
+        app:layout_constraintTop_toBottomOf="@+id/textPassword5" />
 
     <TextView
-        android:id="@+id/txtUserInfoRole"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="137dp"
-        android:layout_marginLeft="137dp"
-        android:layout_marginTop="389dp"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/textView87"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView42"
+        android:id="@+id/textPassword7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="278dp"
-        android:layout_marginRight="278dp"
-        android:text="First Name"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:text="Password"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/inputPwd5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/btnUserInfoEdit"
+        android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="141dp"
         android:layout_marginBottom="46dp"
-        android:text="Edit"
+        android:text="Save"
         android:textSize="18sp"
         app:backgroundTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"

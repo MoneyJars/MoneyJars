@@ -8,52 +8,51 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseBase extends SQLiteOpenHelper {
 
-    public final static String DATABASE_NAME = "MoneyJarsDB";
-    public final static int DATABASE_VERSION = 2;
-    public final static String TABLE_USER = "USER";
-    public final static String TABLE_USER_COL_EMAIL        = "Email";
-    public final static String TABLE_USER_COL_FIRSTNAME    = "FirstName";
-    public final static String TABLE_USER_COL_LASTNAME     = "LastName";
-    public final static String TABLE_USER_COL_PASSWORD     = "Password";
-    public final static String TABLE_USER_COL_ROLE         = "ROLE";
-    public final static String TABLE_USER_COL_ROLE_ADMIN = "01";
-    public final static String TABLE_USER_COL_ROLE_USER = "02";
+    final static String DATABASE_NAME = "MoneyJarsDB";
+    final static int DATABASE_VERSION = 2;
+    final static String TABLE_USER = "USER";
+    final static String TABLE_USER_COL_EMAIL        = "Email";
+    final static String TABLE_USER_COL_FIRSTNAME    = "FirstName";
+    final static String TABLE_USER_COL_LASTNAME     = "LastName";
+    final static String TABLE_USER_COL_PASSWORD     = "Password";
+    final static String TABLE_USER_COL_ROLE         = "ROLE";
+    final static String TABLE_USER_COL_ROLE_ADMIN = "01";
+    final static String TABLE_USER_COL_ROLE_USER = "02";
 
 
-    public final static String TABLE_FINANCIAL = "FINANCIAL";
-    public final static String TABLE_FINANCIAL_COL_FINANCIALID        = "FinancialID";
-    public final static String TABLE_FINANCIAL_COL_TITLE    = "Title";
-    public final static String TABLE_FINANCIAL_COL_AMOUNT     = "Amount";
-    public final static String TABLE_FINANCIAL_COL_ISSUEDATE     = "IssuedDate";
-    public final static String TABLE_FINANCIAL_COL_TYPE         = "Type";
-    public final static String TABLE_FINANCIAL_COL_EMAIL         = "Email";
-    public final static String TABLE_FINANCIAL_COL_CATEGORYID      = "CategoryID";
-    public final static String TABLE_FINANCIAL_COL_TYPE_EXPENCE_DAY = "01";
-    public final static String TABLE_FINANCIAL_COL_TYPE_EXPENCE_MONTHLY = "02";
+    final static String TABLE_FINANCIAL = "FINANCIAL";
+    final static String TABLE_FINANCIAL_COL_FINANCIALID        = "FinancialID";
+    final static String TABLE_FINANCIAL_COL_TITLE    = "Title";
+    final static String TABLE_FINANCIAL_COL_AMOUNT     = "Amount";
+    final static String TABLE_FINANCIAL_COL_ISSUEDATE     = "IssuedDate";
+    final static String TABLE_FINANCIAL_COL_TYPE         = "Type";
+    final static String TABLE_FINANCIAL_COL_EMAIL         = "Email";
+    final static String TABLE_FINANCIAL_COL_CATEGORYID      = "CategoryID";
+    final static String TABLE_FINANCIAL_COL_TYPE_EXPENCE_DAY = "01";
+    final static String TABLE_FINANCIAL_COL_TYPE_EXPENCE_MONTHLY = "02";
 
-    public final static String TABLE_EXPENSE = "EXPENSE";
-    public final static String TABLE_EXPENSE_COL_FINANCIALID        = "FinancialID";
-    public final static String TABLE_EXPENSE_COL_NOTE    = "Note";
+    final static String TABLE_EXPENSE = "EXPENSE";
+    final static String TABLE_EXPENSE_COL_FINANCIALID        = "FinancialID";
+    final static String TABLE_EXPENSE_COL_NOTE    = "Note";
 
-    public final static String TABLE_CATEGORY = "CATEGORY";
-    public final static String TABLE_CATEGORY_COL_CATEGORYID        = "CategoryID";
-    public final static String TABLE_CATEGORY_COL_CATEGORYNAME    = "CategoryName";
-    public final static String TABLE_CATEGORY_COL_CATEGORYTYPE     = "CategoryType";
-    public final static String TABLE_CATEGORY_COL_CATEGORYTYPE_INCOME = "01";
-    public final static String TABLE_CATEGORY_COL_CATEGORYTYPE_EXPENSE = "02";
+    final static String TABLE_CATEGORY = "CATEGORY";
+    final static String TABLE_CATEGORY_COL_CATEGORYID        = "CategoryID";
+    final static String TABLE_CATEGORY_COL_CATEGORYNAME    = "CategoryName";
+    final static String TABLE_CATEGORY_COL_CATEGORYTYPE     = "CategoryType";
+    final static String TABLE_CATEGORY_COL_CATEGORYTYPE_INCOME = "01";
+    final static String TABLE_CATEGORY_COL_CATEGORYTYPE_EXPENSE = "02";
 
-    public final static String TABLE_BIGEXPENSE = "BIGEXPENSE";
-    public final static String TABLE_BIGEXPENSE_COL_BIGEXPENSEID   = "BigExpenseID";
-    public final static String TABLE_BIGEXPENSE_COL_TITLE          = "Title";
-    public final static String TABLE_BIGEXPENSE_COL_AMOUNT         = "Amount";
-    public final static String TABLE_BIGEXPENSE_COL_ISSUEDATE      = "IssuedDate";
-    public final static String TABLE_BIGEXPENSE_COL_EMAIL          = "Email";
+    final static String TABLE_BIGEXPENSE = "BIGEXPENSE";
+    final static String TABLE_BIGEXPENSE_COL_BIGEXPENSEID   = "BigExpenseID";
+    final static String TABLE_BIGEXPENSE_COL_TITLE          = "Title";
+    final static String TABLE_BIGEXPENSE_COL_AMOUNT         = "Amount";
+    final static String TABLE_BIGEXPENSE_COL_ISSUEDATE      = "IssuedDate";
+    final static String TABLE_BIGEXPENSE_COL_EMAIL          = "Email";
 
 
     public DatabaseBase(@Nullable Context context) {
