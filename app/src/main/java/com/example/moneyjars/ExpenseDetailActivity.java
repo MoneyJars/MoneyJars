@@ -34,7 +34,6 @@ public class ExpenseDetailActivity extends HeaderActivity {
         String financialId = intent.getExtras().getString("FinancialId");
         String categoryId = intent.getExtras().getString("CategoryId");
         Cursor c = registerExpenseDataBaseHelper.getExpenseDetail(financialId, categoryId);
-        System.out.println(financialId);
 
         if(c.getCount() > 0) {
             while(c.moveToNext()) {

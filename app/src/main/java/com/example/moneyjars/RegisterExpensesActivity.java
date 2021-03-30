@@ -37,7 +37,7 @@ public class RegisterExpensesActivity extends HeaderActivity {
 
 
         registerExpenseDataBaseHelper = new RegisterExpenseDataBaseHelper(this);
-        String userEmail = preferences.getString(USER_EMAIL, "test1@hotmail.com");
+        String userEmail = preferences.getString(USER_EMAIL, "test@hotmail.com");
         Button btnSaveRegisterExpense = findViewById(R.id.registerExpenseSave);
         Spinner spinner = findViewById(R.id.spExpenseCategory);
         EditText amount = findViewById(R.id.registerExpenseAmount);

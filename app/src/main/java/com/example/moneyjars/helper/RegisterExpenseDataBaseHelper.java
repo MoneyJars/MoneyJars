@@ -29,10 +29,10 @@ public class RegisterExpenseDataBaseHelper extends DatabaseBase {
 
         if(dateType == "01") {
             values.put(TABLE_FINANCIAL_COL_TYPE, TABLE_FINANCIAL_COL_TYPE_EXPENCE_DAY);
-            values.put(TABLE_FINANCIAL_COL_TITLE, "DayExpense");
+            values.put(TABLE_FINANCIAL_COL_TITLE, "Day Expense");
         }else if (dateType == "02"){
             values.put(TABLE_FINANCIAL_COL_TYPE, TABLE_FINANCIAL_COL_TYPE_EXPENCE_MONTHLY);
-            values.put(TABLE_FINANCIAL_COL_TITLE, "MonthlyExpense");
+            values.put(TABLE_FINANCIAL_COL_TITLE, "Monthly Expense");
         }
         values.put(TABLE_FINANCIAL_COL_EMAIL, userEmail);
         values.put(TABLE_FINANCIAL_COL_ISSUEDATE, issueDate);
