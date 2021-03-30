@@ -1,11 +1,5 @@
 <resources>
     <string name="app_name">MoneyJars</string>
-    <string-array name="category">
-        <item>Bills &amp; Utilities</item>
-        <item>Grocery</item>
-        <item>Dining</item>
-        <item>Transportation</item>
-    </string-array>
     <string-array name="incomeCategory">
         <item>Salary</item>
         <item>Saving</item>

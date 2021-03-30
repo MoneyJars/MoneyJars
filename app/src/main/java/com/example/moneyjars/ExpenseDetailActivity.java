@@ -1,16 +1,21 @@
 package com.example.moneyjars;
 
-import android.os.Bundle;
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.moneyjars.helper.RegisterExpenseDataBaseHelper;
 
-public class ExpenseDetailActivity extends AppCompatActivity {
+public class ExpenseDetailActivity extends HeaderActivity {
 
     RegisterExpenseDataBaseHelper registerExpenseDataBaseHelper;
-    private int financial_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,25 +26,48 @@ public class ExpenseDetailActivity extends AppCompatActivity {
         TextView expenseDetailType = findViewById(R.id.txtExpenseDetailType);
         TextView expenseDetailIssueDate = findViewById(R.id.txtExpenseDetailIssueDate);
         TextView expenseDetailCategory = findViewById(R.id.txtExpenseDeatilCategory);
-        TextView expenseDetailAmout = findViewById(R.id.txtExpenseDetailAmout);
-        TextView expenseDeatilNote = findViewById(R.id.txtExpenseDeatilNote);
+        TextView expenseDetailAmount = findViewById(R.id.txtExpenseDetailAmout);
+        TextView expenseDetailNote = findViewById(R.id.txtExpenseDeatilNote);
+        Button btnDelete = findViewById(R.id.btnDeleteDetail);
 
-        financial_id = getIntent().getIntExtra("Financial_Id", 0);
+        Intent intent = getIntent();
+        String financialId = intent.getExtras().getString("FinancialId");
+        String categoryId = intent.getExtras().getString("CategoryId");
+        Cursor c = registerExpenseDataBaseHelper.getExpenseDetail(financialId, categoryId);
+        System.out.println(financialId);
 
-//        Cursor typeAmountDate = registerExpenseDataBaseHelper.typeAmountDateExpenseDetail(String.valueOf(financial_id));
-//        if(typeAmountDate.getCount() >0) {
-//            while(typeAmountDate.moveToNext()) {
-//                expenseDetailType.setText(typeAmountDate.getString(1));
-//                expenseDetailIssueDate.setText(typeAmountDate.getString(2));
-//                expenseDetailAmout.setText(typeAmountDate.getString(0));
-//
-//            }
-//
-//        }
-//        typeAmountDate.close();
+        if(c.getCount() > 0) {
+            while(c.moveToNext()) {
 
+                if(c.getString(0).equals("01")) {
+                    expenseDetailType.setText("Day");
+                }else if(c.getString(0).equals("02")) {
+                    expenseDetailType.setText("Monthly");
+                }
+                expenseDetailIssueDate.setText(c.getString(1));
+                expenseDetailCategory.setText(c.getString(2));
+                expenseDetailAmount.setText("$" + c.getString(3));
+                expenseDetailNote.setText(c.getString(4));
 
+            }
+        }
 
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            boolean isDeleted;
+            @Override
+            public void onClick(View v) {
+                isDeleted = registerExpenseDataBaseHelper.deleteRec(financialId);
+
+                if(isDeleted) {
+                    Toast.makeText(ExpenseDetailActivity.this, "Data deleted",
+                            Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(ExpenseDetailActivity.this, ExpenseTrackerListActivity.class));
+                }else {
+                    Toast.makeText(ExpenseDetailActivity.this, "Data not deleted",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
     }
 }

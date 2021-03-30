@@ -2,10 +2,12 @@ package com.example.moneyjars;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -25,47 +27,57 @@ import java.util.List;
 public class RegisterExpensesActivity extends HeaderActivity {
 
     RegisterExpenseDataBaseHelper registerExpenseDataBaseHelper;
+    private String selectedCategoryId;
 
-    private TextView selectDate;
     private DatePickerDialog.OnDateSetListener dateSetListener;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_expenses);
 
+
         registerExpenseDataBaseHelper = new RegisterExpenseDataBaseHelper(this);
-        selectDate = findViewById(R.id.registerExDate);
+        String userEmail = preferences.getString(USER_EMAIL, "test1@hotmail.com");
         Button btnSaveRegisterExpense = findViewById(R.id.registerExpenseSave);
         Spinner spinner = findViewById(R.id.spExpenseCategory);
         EditText amount = findViewById(R.id.registerExpenseAmount);
         EditText note = findViewById(R.id.registerExpenseNote);
-        Button exit = findViewById(R.id.btnExitRegisterExpense);
+        Button exit = findViewById(R.id.btnExitddd);
         RadioButton rbtnDay = findViewById(R.id.rBtnDayExpense);
         RadioButton rbtnMonth = findViewById(R.id.rBtnMonExpense);
+        TextView selectDate = findViewById(R.id.registerExDate);
+        TextView hiddenText = findViewById(R.id.txtHidden);
 
 
-
-        List<String> arrayList = new ArrayList();
-        for(int i=0; i<3; i++) {
-            int resourceId = getResources().getIdentifier("aaa"+i, "string", getPackageName());
-            HashMap<Integer, String> map = new HashMap<Integer, String>();
-            map.put(i,getResources().getString(resourceId));
-            arrayList.add(getResources().getString(resourceId));
+        HashMap<String, String> spinnerMap = new HashMap<String, String>();
+        List spinnerList = new ArrayList();
+        Cursor c = registerExpenseDataBaseHelper.getCategories();
+        while(c.moveToNext()) {
+            spinnerMap.put(c.getString(1),c.getString(0));
+            String category = c.getString(1);
+            spinnerList.add(category);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_spinner_dropdown_item, arrayList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setSelection(0);
+         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerList);
+         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+         spinner.setAdapter(arrayAdapter);
+         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+             @Override
+             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                 selectedCategoryId = spinnerMap.get(spinner.getSelectedItem());
+                 hiddenText.setText(selectedCategoryId);
+             }
 
+             @Override
+             public void onNothingSelected(AdapterView<?> parent) {
+
+             }
+         });
 
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(com.example.moneyjars.RegisterExpensesActivity.this, ExpenseDetailActivity.class));
+                startActivity(new Intent(com.example.moneyjars.RegisterExpensesActivity.this, ExpenseTrackerListActivity.class));
             }
         });
 
@@ -90,31 +102,45 @@ public class RegisterExpensesActivity extends HeaderActivity {
         dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                String newMonth;
+                String newDayOfMonth;
                 month = month + 1;
-
-                String date = year + "/" + month + "/" + dayOfMonth;
+                if(month < 10) {
+                    newMonth = "0" + String.valueOf(month);
+                }else {
+                    newMonth = String.valueOf(month);
+                }
+                if(dayOfMonth < 10) {
+                    newDayOfMonth = "0" + String.valueOf(dayOfMonth);
+                }else {
+                    newDayOfMonth = String.valueOf(dayOfMonth);
+                }
+                String date = year + "/" + newMonth + "/" + newDayOfMonth;
                 selectDate.setText(date);
             }
         };
 
         btnSaveRegisterExpense.setOnClickListener(new View.OnClickListener() {
             boolean isInsertedFinancial;
-            boolean isInsertedCategory;
             boolean isInsertedExpense;
+            String selectedType;
+
             @Override
             public void onClick(View v) {
 
 
                 if(rbtnDay.isChecked()) {
-                    isInsertedFinancial = registerExpenseDataBaseHelper.registerExpenseToFinancial(registerExpenseDataBaseHelper.TABLE_FINANCIAL_COL_TYPE_EXPENSE_DAY,
-                            selectDate.getText().toString(), Integer.parseInt(amount.getText().toString()));
+                    selectedType = "01";
+                    isInsertedFinancial = registerExpenseDataBaseHelper.registerExpenseToFinancial(selectedType,
+                            selectDate.getText().toString(), Integer.parseInt(amount.getText().toString()), hiddenText.getText().toString(), userEmail);
                     isInsertedExpense = registerExpenseDataBaseHelper.registerExpenseToExpense(
                             note.getText().toString());
 
-                }else if(rbtnMonth.isChecked()) {
 
-                    isInsertedFinancial = registerExpenseDataBaseHelper.registerExpenseToFinancial(registerExpenseDataBaseHelper.TABLE_FINANCIAL_COL_TYPE_EXPENSE_MONTHLY,
-                            selectDate.getText().toString(), Integer.parseInt(amount.getText().toString()));
+                }else if(rbtnMonth.isChecked()) {
+                    selectedType = "02";
+                    isInsertedFinancial = registerExpenseDataBaseHelper.registerExpenseToFinancial(selectedType,
+                            selectDate.getText().toString(), Integer.parseInt(amount.getText().toString()), hiddenText.getText().toString(), userEmail);
                     isInsertedExpense = registerExpenseDataBaseHelper.registerExpenseToExpense(
                             note.getText().toString());
                 }
@@ -129,6 +155,8 @@ public class RegisterExpensesActivity extends HeaderActivity {
                     amount.setText("");
                     spinner.setSelection(0);
                     note.setText("");
+
+                    startActivity(new Intent(RegisterExpensesActivity.this, ExpenseTrackerListActivity.class));
 
 
                 }else {

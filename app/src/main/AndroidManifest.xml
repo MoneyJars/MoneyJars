@@ -9,13 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneyJars">
+        <activity android:name=".ExpenseDetailActivity"></activity>
         <activity android:name=".HeaderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".TestActivity">
             <intent-filter>
@@ -98,13 +98,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserInfoDetailActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ExpenseDetailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
